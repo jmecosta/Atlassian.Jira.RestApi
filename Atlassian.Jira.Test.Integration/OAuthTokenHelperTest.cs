@@ -27,7 +27,7 @@ namespace Atlassian.Jira.Test.Integration
 
             // Attempt to get an access token before it has been authorized.
             var oAuthAccessTokenSettings = new OAuthAccessTokenSettings(oAuthTokenSettings, oAuthRequestToken);
-            var accessToken = await OAuthTokenHelper.ObtainAccessTokenAsync(oAuthAccessTokenSettings, CancellationToken.None);
+            var accessToken = await OAuthTokenHelper.ObtainOAuthAccessTokenAsync(oAuthAccessTokenSettings, CancellationToken.None);
 
             // Verify no access token is granted.
             UniTestAssert.Null(accessToken);
@@ -45,7 +45,7 @@ namespace Atlassian.Jira.Test.Integration
             page.RootElement.ChildElements.Find("approve").Click();
 
             // Re-Attempt to get an access token
-            accessToken = await OAuthTokenHelper.ObtainAccessTokenAsync(oAuthAccessTokenSettings, CancellationToken.None);
+            accessToken = await OAuthTokenHelper.ObtainOAuthAccessTokenAsync(oAuthAccessTokenSettings, CancellationToken.None);
 
             // Verify access token exists.
             UniTestAssert.NotNull(accessToken);

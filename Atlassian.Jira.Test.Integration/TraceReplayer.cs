@@ -45,7 +45,7 @@ namespace Atlassian.Jira.Test.Integration
             }
         }
 
-        public Task<IRestResponse> ExecuteRequestAsync(IRestRequest request, CancellationToken token = default(CancellationToken))
+        public Task<RestResponse> ExecuteRequestAsync(RestRequest request, CancellationToken token = default(CancellationToken))
         {
             throw new NotImplementedException();
         }

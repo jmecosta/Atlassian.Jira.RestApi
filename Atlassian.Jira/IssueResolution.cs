@@ -9,9 +9,11 @@ namespace Atlassian.Jira
     /// <summary>
     /// The resolution of the issue as defined in JIRA
     /// </summary>
-    [SuppressMessage("N/A", "CS0660", Justification = "Operator overloads are used for LINQ to JQL provider.")]
-    [SuppressMessage("N/A", "CS0661", Justification = "Operator overloads are used for LINQ to JQL provider.")]
+#pragma warning disable CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
+#pragma warning disable CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
     public class IssueResolution : JiraNamedEntity
+#pragma warning restore CS0661 // Type defines operator == or operator != but does not override Object.GetHashCode()
+#pragma warning restore CS0660 // Type defines operator == or operator != but does not override Object.Equals(object o)
     {
         /// <summary>
         /// Creates an instance of the IssueResolution based on a remote entity.

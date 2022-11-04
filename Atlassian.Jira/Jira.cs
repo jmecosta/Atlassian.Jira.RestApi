@@ -305,22 +305,6 @@ namespace Atlassian.Jira
         public bool Debug { get; set; }
 
         /// <summary>
-        /// Maximum number of issues per request
-        /// </summary>
-        [Obsolete("Use Jira.Issues.MaxIssuesPerRequest")]
-        public int MaxIssuesPerRequest
-        {
-            get
-            {
-                return this.Issues.MaxIssuesPerRequest;
-            }
-            set
-            {
-                this.Issues.MaxIssuesPerRequest = value;
-            }
-        }
-
-        /// <summary>
         /// Url to the JIRA server
         /// </summary>
         public string Url

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageId>Atlassian.SDK</PackageId>
-    <Version>$(Version)</Version>
+    <Version>14.0.0-alpha001</Version>
     <Authors>Federico Silva Armas</Authors>
     <Company>Federico Silva Armas</Company>
     <Product>Atlassian.SDK</Product>
@@ -10,13 +10,20 @@
     <PackageTags>Atlassian JIRA LINQ</PackageTags>
     <PackageReleaseNotes>For change history, visit: https://bitbucket.org/farmas/atlassian.net-sdk/src/master/docs/change-history.md</PackageReleaseNotes>
     <Description>Utilities to interact with Atlassian products. Contains LinqToJira provider for querying JIRA Issue tracker (http://www.atlassian.com/software/jira).</Description>
-    <PackageIconUrl>https://res.cloudinary.com/farmas/image/upload/v1581984204/atlassian/AtlassianIcon.png</PackageIconUrl>
     <PackageProjectUrl>https://bitbucket.org/farmas/atlassian.net-sdk</PackageProjectUrl>
     <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>$(Version)</AssemblyVersion>
-    <FileVersion>$(Version)</FileVersion>
+    <AssemblyVersion>14.0.0.0</AssemblyVersion>
+    <WarningsAsErrors>true</WarningsAsErrors>
+    <FileVersion>14.0.0</FileVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Sing.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>  
   <ItemGroup>
     <Compile Remove="Properties\**" />
     <EmbeddedResource Remove="Properties\**" />

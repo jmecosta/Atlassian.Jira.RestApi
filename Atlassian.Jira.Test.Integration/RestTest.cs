@@ -16,12 +16,11 @@ namespace Atlassian.Jira.Test.Integration
         public CookiesRestClient(string url, string user, string password)
             : base(url, user, password)
         {
-            RestSharpClient.CookieContainer = new CookieContainer();
             RestSharpClient.Authenticator = null;
             _authenticator = new HttpBasicAuthenticator(user, password);
         }
 
-        protected override async Task<IRestResponse> ExecuteRawResquestAsync(IRestRequest request, CancellationToken token)
+        protected override async Task<RestResponse> ExecuteRawResquestAsync(RestRequest request, CancellationToken token)
         {
             var response = await RestSharpClient.ExecuteAsync(request, token).ConfigureAwait(false);
 
@@ -57,7 +56,7 @@ namespace Atlassian.Jira.Test.Integration
         [ClassData(typeof(JiraProvider))]
         public void ExecuteRestRequest(Jira jira)
         {
-            var users = jira.RestClient.ExecuteRequestAsync<JiraNamedResource[]>(Method.GET, "rest/api/2/user/assignable/multiProjectSearch?projectKeys=TST").Result;
+            var users = jira.RestClient.ExecuteRequestAsync<JiraNamedResource[]>(Method.Get, "rest/api/2/user/assignable/multiProjectSearch?projectKeys=TST").Result;
 
             Assert.True(users.Length >= 2);
             Assert.Contains(users, u => u.Name == "admin");
@@ -77,7 +76,7 @@ namespace Atlassian.Jira.Test.Integration
             issue.SaveChanges();
 
             var rawBody = String.Format("{{ \"jql\": \"Key=\\\"{0}\\\"\" }}", issue.Key.Value);
-            var json = jira.RestClient.ExecuteRequestAsync(Method.POST, "rest/api/2/search", rawBody).Result;
+            var json = jira.RestClient.ExecuteRequestAsync(Method.Post, "rest/api/2/search", rawBody).Result;
 
             Assert.Equal(issue.Key.Value, json["issues"][0]["key"].ToString());
         }
