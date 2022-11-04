@@ -20,7 +20,9 @@ namespace Atlassian.Jira.OAuth
         /// <param name="oAuthRequestTokenSettings"> The request token settings.</param>
         /// <param name="cancellationToken">Cancellation token for this operation.</param>
         /// <returns>The <see cref="OAuthRequestToken" /> containing the request token, the consumer token and the authorize url.</returns>
-        public static Task<OAuthRequestToken> GenerateRequestTokenAsync(OAuthRequestTokenSettings oAuthRequestTokenSettings, CancellationToken cancellationToken = default(CancellationToken))
+        public static Task<OAuthRequestToken> GenerateRequestTokenAsync(
+            OAuthRequestTokenSettings oAuthRequestTokenSettings,
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             var authenticator = OAuth1Authenticator.ForRequestToken(
                 oAuthRequestTokenSettings.ConsumerKey,
@@ -34,10 +36,12 @@ namespace Atlassian.Jira.OAuth
                 Authenticator = authenticator
             };
 
+            var authRestOptions = new RestClientOptions { BaseUrl = new Uri(oAuthRequestTokenSettings.Url) };
             return GenerateRequestTokenAsync(
                 restClient,
                 oAuthRequestTokenSettings.RequestTokenUrl,
                 oAuthRequestTokenSettings.AuthorizeUrl,
+                authRestOptions,
                 cancellationToken);
         }
 
@@ -50,9 +54,10 @@ namespace Atlassian.Jira.OAuth
         /// <param name="cancellationToken">Cancellation token for this operation.</param>
         /// <returns>The <see cref="OAuthRequestToken" /> containing the request token, the consumer token and the authorize url.</returns>
         public static async Task<OAuthRequestToken> GenerateRequestTokenAsync(
-            IRestClient restClient,
+            RestClient restClient,
             string requestTokenUrl,
             string authorizeTokenUrl,
+            RestClientOptions restClientOptions,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var requestTokenResponse = await restClient.ExecutePostAsync(
@@ -67,7 +72,7 @@ namespace Atlassian.Jira.OAuth
             var requestTokenQuery = HttpUtility.ParseQueryString(requestTokenResponse.Content.Trim());
 
             var oauthToken = requestTokenQuery["oauth_token"];
-            var authorizeUri = $"{restClient.BaseUrl}/{authorizeTokenUrl}?oauth_token={oauthToken}";
+            var authorizeUri = $"{restClientOptions.BaseUrl}/{authorizeTokenUrl}?oauth_token={oauthToken}";
 
             return new OAuthRequestToken(
                 authorizeUri,
@@ -101,7 +106,7 @@ namespace Atlassian.Jira.OAuth
         /// Return null if the token was not returned by Jira or the token secret for the request token and the access token don't match.</returns>
         [Obsolete("Use ObtainOAuthAccessTokenAsync instead and get its OAuthToken field")]
         public static async Task<string> ObtainAccessTokenAsync(
-            IRestClient restClient,
+            RestClient restClient,
             string accessTokenUrl,
             string oAuthTokenSecret,
             CancellationToken cancellationToken)
@@ -149,13 +154,13 @@ namespace Atlassian.Jira.OAuth
         /// <returns>The access token from Jira.
         /// Return null if the token was not returned by Jira or the token secret for the request token and the access token don't match.</returns>
         public static async Task<OAuthAccessToken> ObtainOAuthAccessTokenAsync(
-            IRestClient restClient,
+            RestClient restClient,
             string accessTokenUrl,
             string oAuthTokenSecret,
             CancellationToken cancellationToken)
         {
             var accessTokenResponse = await restClient.ExecutePostAsync(
-                new RestRequest(accessTokenUrl, Method.POST),
+                new RestRequest(accessTokenUrl, Method.Post),
                 cancellationToken).ConfigureAwait(false);
 
             if (accessTokenResponse.StatusCode != HttpStatusCode.OK)

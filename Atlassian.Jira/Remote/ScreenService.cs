@@ -19,7 +19,7 @@ namespace Atlassian.Jira.Remote
         {
             var resource = $"rest/api/2/screens/{screenId}/availableFields";
 
-            var remoteScreenFields = await _jira.RestClient.ExecuteRequestAsync<IEnumerable<RemoteScreenField>>(Method.GET, resource, null, token).ConfigureAwait(false);
+            var remoteScreenFields = await _jira.RestClient.ExecuteRequestAsync<IEnumerable<RemoteScreenField>>(Method.Get, resource, null, token).ConfigureAwait(false);
 
             var screenFields = remoteScreenFields.Select(x => new ScreenField(x));
             return screenFields;
@@ -33,7 +33,7 @@ namespace Atlassian.Jira.Remote
                 resource += $"?projectKey={projectKey}";
             }
 
-            var remoteScreenTabs = await _jira.RestClient.ExecuteRequestAsync<IEnumerable<RemoteScreenTab>>(Method.GET, resource, null, token).ConfigureAwait(false);
+            var remoteScreenTabs = await _jira.RestClient.ExecuteRequestAsync<IEnumerable<RemoteScreenTab>>(Method.Get, resource, null, token).ConfigureAwait(false);
 
             var screenTabs = remoteScreenTabs.Select(x => new ScreenTab(x));
             return screenTabs;
@@ -47,7 +47,7 @@ namespace Atlassian.Jira.Remote
                 resource += $"?projectKey={projectKey}";
             }
 
-            var remoteScreenFields = await _jira.RestClient.ExecuteRequestAsync<IEnumerable<RemoteScreenField>>(Method.GET, resource, null, token).ConfigureAwait(false);
+            var remoteScreenFields = await _jira.RestClient.ExecuteRequestAsync<IEnumerable<RemoteScreenField>>(Method.Get, resource, null, token).ConfigureAwait(false);
 
             var screenFields = remoteScreenFields.Select(x => new ScreenField(x));
             return screenFields;

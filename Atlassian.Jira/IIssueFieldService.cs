@@ -22,13 +22,5 @@ namespace Atlassian.Jira
         /// <param name="options">Options to fetch custom fields.</param>
         /// <param name="token">Cancellation token for this operation.</param>
         Task<IEnumerable<CustomField>> GetCustomFieldsAsync(CustomFieldFetchOptions options, CancellationToken token = default(CancellationToken));
-
-        /// <summary>
-        /// Returns all custom fields within JIRA for the project specified.
-        /// </summary>
-        /// <param name="projectKey">The project key to retrieve all the custom fields from.</param>
-        /// <param name="token">Cancellation token for this operation.</param>
-        [Obsolete("Use GetCustomFieldsAsync(options) instead.")]
-        Task<IEnumerable<CustomField>> GetCustomFieldsForProjectAsync(string projectKey, CancellationToken token = default(CancellationToken));
     }
 }

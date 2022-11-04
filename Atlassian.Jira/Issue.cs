@@ -820,47 +820,6 @@ namespace Atlassian.Jira
         }
 
         /// <summary>
-        /// Retrieve the labels from server for this issue.
-        /// </summary>
-        /// <param name="token">Cancellation token for this operation.</param>
-        [Obsolete("Use Issue.Labels instead.")]
-        public Task<string[]> GetLabelsAsync(CancellationToken token = default(CancellationToken))
-        {
-            if (String.IsNullOrEmpty(_originalIssue.key))
-            {
-                throw new InvalidOperationException("Unable to get labels from issue, issue has not been created.");
-            }
-
-            return Jira.Issues.GetLabelsAsync(_originalIssue.key, token);
-        }
-
-        /// <summary>
-        /// Sets the labels of this issue.
-        /// </summary>
-        /// <param name="labels">The list of labels to set on the issue</param>
-        [Obsolete("Modify the Issue.Labels collection and call Issue.SaveChanges to update the labels field.")]
-        public Task SetLabelsAsync(params string[] labels)
-        {
-            return SetLabelsAsync(labels, CancellationToken.None);
-        }
-
-        /// <summary>
-        /// Sets the labels of this issue.
-        /// </summary>
-        /// <param name="labels">The list of labels to set on the issue</param>
-        /// <param name="token">Cancellation token for this operation.</param>
-        [Obsolete("Modify the Issue.Labels collection and call Issue.SaveChanges to update the labels field.")]
-        public Task SetLabelsAsync(string[] labels, CancellationToken token = default(CancellationToken))
-        {
-            if (String.IsNullOrEmpty(_originalIssue.key))
-            {
-                throw new InvalidOperationException("Unable to add label to issue, issue has not been created.");
-            }
-
-            return _jira.Issues.SetLabelsAsync(_originalIssue.key, labels, token);
-        }
-
-        /// <summary>
         ///  Adds a worklog to this issue.
         /// </summary>
         /// <param name="timespent">Specifies a time duration in JIRA duration format, representing the time spent working on the worklog</param>

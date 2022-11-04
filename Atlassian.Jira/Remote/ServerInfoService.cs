@@ -21,7 +21,7 @@ namespace Atlassian.Jira.Remote
                 resource += "?doHealthCheck=true";
             }
 
-            var remoteServerInfo = await _jira.RestClient.ExecuteRequestAsync<RemoteServerInfo>(Method.GET, resource, null, token).ConfigureAwait(false);
+            var remoteServerInfo = await _jira.RestClient.ExecuteRequestAsync<RemoteServerInfo>(Method.Get, resource, null, token).ConfigureAwait(false);
 
             return new ServerInfo(remoteServerInfo);
         }

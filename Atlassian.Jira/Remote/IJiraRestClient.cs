@@ -30,7 +30,7 @@ namespace Atlassian.Jira.Remote
         /// </summary>
         /// <param name="request">Request object.</param>
         /// <param name="token">Cancellation token for the operation.</param>
-        Task<IRestResponse> ExecuteRequestAsync(IRestRequest request, CancellationToken token = default(CancellationToken));
+        Task<RestResponse> ExecuteRequestAsync(RestRequest request, CancellationToken token = default(CancellationToken));
 
         /// <summary>
         /// Executes an async request and returns the response as JSON.

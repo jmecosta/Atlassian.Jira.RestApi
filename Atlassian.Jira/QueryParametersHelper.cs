@@ -12,17 +12,6 @@ namespace Atlassian.Jira
         /// </summary>
         /// <param name="query">The url query.</param>
         /// <returns>List of all parameters within the query.</returns>
-        [Obsolete("GetQueryParametersFromPath() use obsolete RestSharp.Parameter. Use GetParametersFromPath() instead.")]
-        public static IEnumerable<RestSharp.Parameter> GetQueryParametersFromPath(string query)
-        {
-            return GetParametersFromPath(query).Select(x => new RestSharp.Parameter(x.Name, x.Value, x.Type, x.Encode));
-        }
-
-        /// <summary>
-        /// Gets the parameters from a full query string.
-        /// </summary>
-        /// <param name="query">The url query.</param>
-        /// <returns>List of all parameters within the query.</returns>
         public static IEnumerable<Parameter> GetParametersFromPath(string query)
         {
             var parameters = query.TrimStart('?')

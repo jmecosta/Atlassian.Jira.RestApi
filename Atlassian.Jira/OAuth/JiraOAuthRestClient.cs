@@ -46,9 +46,9 @@ namespace Atlassian.Jira.OAuth
         /// <summary>
         /// Replace the request query with a collection of parameters.
         /// </summary>
-        protected override Task<IRestResponse> ExecuteRawResquestAsync(IRestRequest request, CancellationToken token)
+        protected override Task<RestResponse> ExecuteRawResquestAsync(RestRequest request, CancellationToken token)
         {
-            Uri fullPath = new Uri(RestSharpClient.BaseUrl, request.Resource);
+            Uri fullPath = new Uri(new Uri(Url), new Uri(request.Resource));
 
             // Move the query parameters to the request parameters.
             if (!string.IsNullOrEmpty(fullPath.Query))
