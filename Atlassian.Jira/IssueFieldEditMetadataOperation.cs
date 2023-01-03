@@ -17,6 +17,8 @@ namespace Atlassian.Jira
         [EnumMember(Value = "REMOVE")]
         REMOVE = 3,
         [EnumMember(Value = "EDIT")]
-        EDIT = 4
+        EDIT = 4,
+        [EnumMember(Value = "COPY")]
+        COPY = 5
     }
 }
