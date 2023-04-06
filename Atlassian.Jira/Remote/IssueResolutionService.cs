@@ -21,7 +21,7 @@ namespace Atlassian.Jira.Remote
 
             if (!cache.Resolutions.Any())
             {
-                var resolutions = await _jira.RestClient.ExecuteRequestAsync<RemoteResolution[]>(Method.GET, "rest/api/2/resolution", null, token).ConfigureAwait(false);
+                var resolutions = await _jira.RestClient.ExecuteRequestAsync<RemoteResolution[]>(Method.Get, "rest/api/2/resolution", null, token).ConfigureAwait(false);
                 cache.Resolutions.TryAdd(resolutions.Select(r => new IssueResolution(r)));
             }
 

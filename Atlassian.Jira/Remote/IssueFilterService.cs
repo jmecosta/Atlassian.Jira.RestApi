@@ -18,12 +18,12 @@ namespace Atlassian.Jira.Remote
 
         public Task<IEnumerable<JiraFilter>> GetFavouritesAsync(CancellationToken token = default)
         {
-            return _jira.RestClient.ExecuteRequestAsync<IEnumerable<JiraFilter>>(Method.GET, "rest/api/2/filter/favourite", null, token);
+            return _jira.RestClient.ExecuteRequestAsync<IEnumerable<JiraFilter>>(Method.Get, "rest/api/2/filter/favourite", null, token);
         }
 
         public Task<JiraFilter> GetFilterAsync(string filterId, CancellationToken token = default)
         {
-            return _jira.RestClient.ExecuteRequestAsync<JiraFilter>(Method.GET, $"rest/api/2/filter/{filterId}", null, token);
+            return _jira.RestClient.ExecuteRequestAsync<JiraFilter>(Method.Get, $"rest/api/2/filter/{filterId}", null, token);
         }
 
         public async Task<IPagedQueryResult<Issue>> GetIssuesFromFavoriteAsync(string filterName, int? maxIssues = null, int startAt = 0, CancellationToken token = default)

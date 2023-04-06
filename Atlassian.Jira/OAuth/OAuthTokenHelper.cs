@@ -28,11 +28,8 @@ namespace Atlassian.Jira.OAuth
                 oAuthRequestTokenSettings.CallbackUrl);
 
             authenticator.SignatureMethod = oAuthRequestTokenSettings.SignatureMethod.ToOAuthSignatureMethod();
-
-            var restClient = new RestClient(oAuthRequestTokenSettings.Url)
-            {
-                Authenticator = authenticator
-            };
+            var options = new RestClientOptions(oAuthRequestTokenSettings.Url) { Authenticator = authenticator };
+            var restClient = new RestClient(options);
 
             return GenerateRequestTokenAsync(
                 restClient,
@@ -67,7 +64,7 @@ namespace Atlassian.Jira.OAuth
             var requestTokenQuery = HttpUtility.ParseQueryString(requestTokenResponse.Content.Trim());
 
             var oauthToken = requestTokenQuery["oauth_token"];
-            var authorizeUri = $"{restClient.BaseUrl}/{authorizeTokenUrl}?oauth_token={oauthToken}";
+            var authorizeUri = $"{restClient.Options.BaseUrl}/{authorizeTokenUrl}?oauth_token={oauthToken}";
 
             return new OAuthRequestToken(
                 authorizeUri,
@@ -127,10 +124,8 @@ namespace Atlassian.Jira.OAuth
                 oAuthAccessTokenSettings.OAuthVerifier);
             authenticator.SignatureMethod = oAuthAccessTokenSettings.SignatureMethod.ToOAuthSignatureMethod();
 
-            var restClient = new RestClient(oAuthAccessTokenSettings.Url)
-            {
-                Authenticator = authenticator
-            };
+            var options = new RestClientOptions(oAuthAccessTokenSettings.Url) { Authenticator = authenticator };
+            var restClient = new RestClient(options);
 
             return ObtainOAuthAccessTokenAsync(
                 restClient,
@@ -155,7 +150,7 @@ namespace Atlassian.Jira.OAuth
             CancellationToken cancellationToken)
         {
             var accessTokenResponse = await restClient.ExecutePostAsync(
-                new RestRequest(accessTokenUrl, Method.POST),
+                new RestRequest(accessTokenUrl, Method.Post),
                 cancellationToken).ConfigureAwait(false);
 
             if (accessTokenResponse.StatusCode != HttpStatusCode.OK)

@@ -30,7 +30,7 @@ namespace Atlassian.Jira.Remote
                 bodyObject.Add("comment", new JObject(new JProperty("body", comment)));
             }
 
-            return _jira.RestClient.ExecuteRequestAsync(Method.POST, "rest/api/2/issueLink", bodyObject, token);
+            return _jira.RestClient.ExecuteRequestAsync(Method.Post, "rest/api/2/issueLink", bodyObject, token);
         }
 
         public async Task<IEnumerable<IssueLink>> GetLinksForIssueAsync(string issueKey, CancellationToken token = default(CancellationToken))
@@ -43,7 +43,7 @@ namespace Atlassian.Jira.Remote
         {
             var serializerSettings = _jira.RestClient.Settings.JsonSerializerSettings;
             var resource = String.Format("rest/api/2/issue/{0}?fields=issuelinks,created", issue.Key.Value);
-            var issueLinksResult = await _jira.RestClient.ExecuteRequestAsync(Method.GET, resource, null, token).ConfigureAwait(false);
+            var issueLinksResult = await _jira.RestClient.ExecuteRequestAsync(Method.Get, resource, null, token).ConfigureAwait(false);
             var issueLinksJson = issueLinksResult["fields"]["issuelinks"];
 
             if (issueLinksJson == null)
@@ -93,7 +93,7 @@ namespace Atlassian.Jira.Remote
 
             if (!cache.LinkTypes.Any())
             {
-                var results = await _jira.RestClient.ExecuteRequestAsync(Method.GET, "rest/api/2/issueLinkType", null, token).ConfigureAwait(false);
+                var results = await _jira.RestClient.ExecuteRequestAsync(Method.Get, "rest/api/2/issueLinkType", null, token).ConfigureAwait(false);
                 var linkTypes = results["issueLinkTypes"]
                     .Cast<JObject>()
                     .Select(issueLinkJson => JsonConvert.DeserializeObject<IssueLinkType>(issueLinkJson.ToString(), serializerSettings));
