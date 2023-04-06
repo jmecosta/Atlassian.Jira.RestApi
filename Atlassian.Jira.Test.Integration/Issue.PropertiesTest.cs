@@ -83,7 +83,7 @@ namespace Atlassian.Jira.Test.Integration
 
             // cast a vote with a second user.
             var jiraTester = Jira.CreateRestClient(JiraProvider.HOST, "test", "test");
-            await jiraTester.RestClient.ExecuteRequestAsync(RestSharp.Method.POST, $"rest/api/2/issue/{issue.Key.Value}/votes");
+            await jiraTester.RestClient.ExecuteRequestAsync(RestSharp.Method.Post, $"rest/api/2/issue/{issue.Key.Value}/votes");
 
             // verify votes for first user
             issue.Refresh();

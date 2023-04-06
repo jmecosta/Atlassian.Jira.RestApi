@@ -364,7 +364,7 @@ namespace Atlassian.Jira.Test.Integration
                     }
                 }
             };
-            jira.RestClient.ExecuteRequestAsync(Method.PUT, resource, body).Wait();
+            jira.RestClient.ExecuteRequestAsync(Method.Put, resource, body).Wait();
 
             issue.Refresh();
             Assert.Equal("Test Issue Security Level", issue.SecurityLevel.Name);

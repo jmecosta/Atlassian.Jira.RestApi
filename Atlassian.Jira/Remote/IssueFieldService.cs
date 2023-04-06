@@ -24,7 +24,7 @@ namespace Atlassian.Jira.Remote
 
             if (!cache.CustomFields.Any())
             {
-                var remoteFields = await _jira.RestClient.ExecuteRequestAsync<RemoteField[]>(Method.GET, "rest/api/2/field", null, token).ConfigureAwait(false);
+                var remoteFields = await _jira.RestClient.ExecuteRequestAsync<RemoteField[]>(Method.Get, "rest/api/2/field", null, token).ConfigureAwait(false);
                 var results = remoteFields.Where(f => f.IsCustomField).Select(f => new CustomField(f));
                 cache.CustomFields.TryAdd(results);
             }
@@ -67,7 +67,7 @@ namespace Atlassian.Jira.Remote
                     resource += $"&issuetypeNames={String.Join(",", options.IssueTypeNames)}";
                 }
 
-                var jObject = await _jira.RestClient.ExecuteRequestAsync(Method.GET, resource, null, token).ConfigureAwait(false);
+                var jObject = await _jira.RestClient.ExecuteRequestAsync(Method.Get, resource, null, token).ConfigureAwait(false);
                 var jProject = jObject["projects"].FirstOrDefault();
 
                 if (jProject == null)
