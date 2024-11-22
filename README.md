@@ -51,21 +51,6 @@ This project is licensed under  [BSD](/LICENSE.md).
 servers.
 - [Jira OAuth CLI](https://bitbucket.org/farmas/atlassian.net-jira-oauth-cli) - Command line tool to setup OAuth on a JIRA server so that it can be used with the Atlassian.NET SDK.
 
-## Signed Version
-
-### Atlassian.SDK.Signed (Deprecated)
-
-The [Atlassian.SDK.Signed](https://www.nuget.org/packages/Atlassian.SDK.Signed/) package contains a signed version of
-the assembly, however it is no longer being mantained. It has the following limitations:
-
-- It references the  [RestSharpSigned](https://www.nuget.org/packages/RestSharpSigned) package, which is not up-to-date
-  to the official  [RestSharp](https://www.nuget.org/packages/RestSharpSigned) package.
-- It only supports net452 framework (does not support .netcore).
-
-### Using StrongNameSigner
-
-An alternative to using the Atlassian.SDK.Signed package is to use the [StrongNameSigner](https://www.nuget.org/packages/Brutal.Dev.StrongNameSigner) which can automatically sign any un-signed packages in your project. For a sample of how to use it in a project see [VS Jira](https://bitbucket.org/farmas/vsjira).
-
 ## Documentation
 
 The documentation is placed under the [docs](/docs) folder.
