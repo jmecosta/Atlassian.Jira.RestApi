@@ -2,17 +2,30 @@
 
 Contains utilities for interacting with  [Atlassian JIRA](http://www.atlassian.com/software/jira).
 
+This is a fork of https://bitbucket.org/farmas/atlassian.net-sdk which by time constrains has not seen any updates. There are quite a few updates in need for this library, so hopefully having this here will make it easier to keep the library updated
+
+## License
+
+This project is licensed under [BSD-2-Clause](https://opensource.org/licenses/BSD-2-Clause)
+
+
+```
+#!c#
+Copyright (c) 2013, Federico Silva Armas
+All rights reserved.
+```
+
+See License file for complete license
+
 ## Support Notice
 
 All features tested on JIRA v8.5.2
 
-Due to time constraints, this project is no longer mantained. Thank you for all the support during these past years.
+Keeping up with dependencies updates and anything that users might want to merge. 
 
 ## Download
 
 - [Get the latest via NuGet](http://nuget.org/List/Packages/Atlassian.SDK).
-- [Get the latest binaries from AppVeyor](https://ci.appveyor.com/project/farmas/atlassian-net-sdk/history).
-  [![Build Status](https://ci.appveyor.com/api/projects/status/bitbucket/farmas/atlassian.net-sdk?branch=release&amp;svg=true)](https://ci.appveyor.com/project/farmas/atlassian-net-sdk)
 
 ## License
 
