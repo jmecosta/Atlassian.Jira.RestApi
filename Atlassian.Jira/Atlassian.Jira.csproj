@@ -22,7 +22,7 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Sing.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\build\MyKeyFile.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>  
   <ItemGroup>
     <Compile Remove="Properties\**" />
@@ -30,7 +30,7 @@
     <None Remove="Properties\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="RestSharp" Version="108.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RestSharp" Version="110.1.0" />
   </ItemGroup>
 </Project>

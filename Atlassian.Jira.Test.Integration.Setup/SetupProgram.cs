@@ -3,6 +3,7 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Atlassian.Jira.Test.Integration.Setup
@@ -44,11 +45,11 @@ namespace Atlassian.Jira.Test.Integration.Setup
 
         private static async Task WaitForJira()
         {
+            
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response = null;
                 var retryCount = 0;
-
                 do
                 {
                     try
