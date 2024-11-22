@@ -1,4 +1,4 @@
-# Atlassian.NET SDK
+# Atlassian.Jira
 
 Contains utilities for interacting with  [Atlassian JIRA](http://www.atlassian.com/software/jira).
 
