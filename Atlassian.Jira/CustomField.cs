@@ -44,5 +44,13 @@ namespace Atlassian.Jira
                 return _remoteField.Schema?.CustomId;
             }
         }
+
+        public RemoteFieldAllowedValues[] AllowedValues
+        {
+            get
+            {
+                return _remoteField.AllowedValues;
+            }
+        }
     }
 }

@@ -1811,6 +1811,9 @@ namespace Atlassian.Jira.Remote
 
         [JsonProperty("schema")]
         public RemoteFieldSchema Schema { get; set; }
+
+        [JsonProperty("allowedValues")]
+        public RemoteFieldAllowedValues[] AllowedValues { get; set; }
     }
 
     public class RemoteFieldSchema
@@ -1830,6 +1833,19 @@ namespace Atlassian.Jira.Remote
         [JsonProperty("system")]
         public string System { get; set; }
     }
+
+    public class RemoteFieldAllowedValues
+    {
+        [JsonProperty("self")]
+        public string Self { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
+
+        [JsonProperty("id")]
+        public string Id { get; set; }
+    }
+
 
     /// <remarks/>
     [System.Xml.Serialization.SoapIncludeAttribute(typeof(RemoteStatus))]
