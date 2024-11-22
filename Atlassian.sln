@@ -1,8 +1,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29324.140
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35514.174 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlassian.Jira", "Atlassian.Jira\Atlassian.Jira.csproj", "{438EB0CF-D781-4F1B-9BD3-B33638AA8D1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlassian.JiraRestApi", "Atlassian.Jira\Atlassian.JiraRestApi.csproj", "{438EB0CF-D781-4F1B-9BD3-B33638AA8D1D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Atlassian.Jira.Test", "Atlassian.Jira.Test\Atlassian.Jira.Test.csproj", "{DF544F47-7EE3-469A-B68E-18D3096B3362}"
 EndProject
@@ -14,7 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
-		docker-compose.yml = docker-compose.yml
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection

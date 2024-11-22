@@ -17,7 +17,6 @@ namespace Atlassian.Jira.Remote
     public class JiraRestClient : IJiraRestClient
     {
         private readonly RestClient _restClient;
-        private readonly RestClientOptions _restClientOptions;
         private readonly JiraRestClientSettings _clientSettings;
 
         /// <summary>

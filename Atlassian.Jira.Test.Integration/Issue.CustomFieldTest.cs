@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
+
 using Newtonsoft.Json;
 using Xunit;
 
@@ -11,7 +13,7 @@ namespace Atlassian.Jira.Test.Integration
 
         [Theory]
         [ClassData(typeof(JiraProvider))]
-        public async void CustomFieldsForProject_IfProjectDoesNotExist_ShouldThrowException(Jira jira)
+        public async Task CustomFieldsForProject_IfProjectDoesNotExist_ShouldThrowException(Jira jira)
         {
             var options = new CustomFieldFetchOptions();
             options.ProjectKeys.Add("FOO");
@@ -22,7 +24,7 @@ namespace Atlassian.Jira.Test.Integration
 
         [Theory]
         [ClassData(typeof(JiraProvider))]
-        public async void CustomFieldsForProject_ShouldReturnAllCustomFieldsOfAllIssueTypes(Jira jira)
+        public async Task CustomFieldsForProject_ShouldReturnAllCustomFieldsOfAllIssueTypes(Jira jira)
         {
             var options = new CustomFieldFetchOptions();
             options.ProjectKeys.Add("TST");
@@ -35,7 +37,7 @@ namespace Atlassian.Jira.Test.Integration
         /// </summary>
         [Theory]
         [ClassData(typeof(JiraProvider))]
-        public async void CustomFieldsForProjectAndIssueType_ShouldReturnAllCustomFieldsTheIssueType(Jira jira)
+        public async Task CustomFieldsForProjectAndIssueType_ShouldReturnAllCustomFieldsTheIssueType(Jira jira)
         {
             var options = new CustomFieldFetchOptions();
             options.ProjectKeys.Add("TST");
@@ -53,7 +55,7 @@ namespace Atlassian.Jira.Test.Integration
         /// </summary>
         [Theory]
         [ClassData(typeof(JiraProvider))]
-        public async void CanSetCustomFieldUsingSearchByProjectOnly(Jira jira)
+        public async Task CanSetCustomFieldUsingSearchByProjectOnly(Jira jira)
         {
             var summaryValue = "Test issue with custom field by project" + _random.Next(int.MaxValue);
             var issue = new Issue(jira, "TST")

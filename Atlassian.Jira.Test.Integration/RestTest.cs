@@ -56,9 +56,9 @@ namespace Atlassian.Jira.Test.Integration
 
         [Theory]
         [ClassData(typeof(JiraProvider))]
-        public void ExecuteRestRequest(Jira jira)
+        public async Task ExecuteRestRequest(Jira jira)
         {
-            var users = jira.RestClient.ExecuteRequestAsync(Method.Get, "rest/api/2/user/assignable/multiProjectSearch?projectKeys=TST").Result;
+            var users = await jira.RestClient.ExecuteRequestAsync(Method.Get, "rest/api/2/user/assignable/multiProjectSearch?projectKeys=TST");
 
             //Assert.True(users.Length >= 2);
             //Assert.Contains(users, u => u.Name == "admin");
@@ -66,7 +66,7 @@ namespace Atlassian.Jira.Test.Integration
 
         [Theory]
         [ClassData(typeof(JiraProvider))]
-        public void ExecuteRawRestRequest(Jira jira)
+        public async Task ExecuteRawRestRequest(Jira jira)
         {
             var issue = new Issue(jira, "TST")
             {
@@ -78,7 +78,7 @@ namespace Atlassian.Jira.Test.Integration
             issue.SaveChanges();
 
             var rawBody = String.Format("{{ \"jql\": \"Key=\\\"{0}\\\"\" }}", issue.Key.Value);
-            var json = jira.RestClient.ExecuteRequestAsync(Method.Post, "rest/api/2/search", rawBody).Result;
+            var json = await jira.RestClient.ExecuteRequestAsync(Method.Post, "rest/api/2/search", rawBody);
 
             Assert.Equal(issue.Key.Value, json["issues"][0]["key"].ToString());
         }

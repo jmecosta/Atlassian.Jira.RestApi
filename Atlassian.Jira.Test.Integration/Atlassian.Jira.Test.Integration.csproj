@@ -3,29 +3,11 @@
     <TargetFrameworks>net8.0</TargetFrameworks>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Properties\**" />
-    <EmbeddedResource Remove="Properties\**" />
-    <None Remove="Properties\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="LTAF.Navigator" Version="0.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="RestSharp" Version="110.1.0" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
-    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
-    <PackageReference Include="xunit.runner.console" Version="2.4.2">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="xunit.runner.utility" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="xunit" Version="2.9.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atlassian.Jira\Atlassian.Jira.csproj" />
+    <ProjectReference Include="..\Atlassian.Jira\Atlassian.JiraRestApi.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Trace_CustomFieldArrayOfObjects.txt">

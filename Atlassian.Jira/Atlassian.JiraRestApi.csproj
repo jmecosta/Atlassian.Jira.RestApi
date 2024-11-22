@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <PackageId>Atlassian.SDK</PackageId>
-    <Version>14.0.0</Version>
+    <Version>1.0.0-alpha001</Version>
     <Authors>Federico Silva Armas</Authors>
     <Company>Federico Silva Armas</Company>
     <Product>Atlassian.SDK</Product>
@@ -13,10 +12,9 @@
     <PackageProjectUrl>https://bitbucket.org/farmas/atlassian.net-sdk</PackageProjectUrl>
     <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>14.0.0.0</AssemblyVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <WarningsAsErrors>true</WarningsAsErrors>
-    <FileVersion>14.0.0</FileVersion>
-    <LangVersion>8.0</LangVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -30,7 +28,8 @@
     <None Remove="Properties\**" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="System.Text.Json " Version="8.0.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="RestSharp" Version="110.1.0" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
   </ItemGroup>
 </Project>

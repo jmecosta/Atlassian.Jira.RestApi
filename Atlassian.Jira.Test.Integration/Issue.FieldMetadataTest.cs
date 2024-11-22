@@ -12,7 +12,7 @@ namespace Atlassian.Jira.Test.Integration
         public async Task TestNonCustomFieldOption(Jira jira)
         {
             // prepare
-            Issue iss = jira.Issues.GetIssueAsync("TST-1").Result;
+            Issue iss = await jira.Issues.GetIssueAsync("TST-1");
 
             // exercise
             var issueFields = await iss.GetIssueFieldsEditMetadataAsync();
@@ -26,7 +26,7 @@ namespace Atlassian.Jira.Test.Integration
         public async Task TestCustomFieldOptions(Jira jira)
         {
             // prepare
-            Issue iss = jira.Issues.GetIssueAsync("TST-1").Result;
+            Issue iss = await jira.Issues.GetIssueAsync("TST-1");
 
             // exercise
             var issueFields = await iss.GetIssueFieldsEditMetadataAsync();
